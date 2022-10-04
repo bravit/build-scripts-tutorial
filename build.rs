@@ -13,15 +13,14 @@ fn main() {
         let stdout = Command::new(path)
             .arg(hello)
             .output()
-            .expect("failed")
+            .expect("cowsay failed")
             .stdout;
         String::from_utf8_lossy(&stdout).to_string()
     } else {
         hello
     };
 
-    let code = format!("
-pub mod generated {{
+    let code = format!("pub mod generated {{
     pub fn say_hello() {{
         println!(r#\"{}\"#)
     }}
