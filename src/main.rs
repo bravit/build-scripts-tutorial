@@ -1,6 +1,8 @@
 include!(concat!(env!("OUT_DIR"), "/generated.rs"));
 
 fn main() {
-    println!("Hello, world!");
-    generated::some_function();
+    if cfg!(cowsay) {
+        println!("Beware of cows!")
+    }
+    generated::say_hello();
 }
