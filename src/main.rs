@@ -1,8 +1,14 @@
 include!(concat!(env!("OUT_DIR"), "/generated.rs"));
 
+#[cfg(cowsay)]
+fn print_warning() {
+    println!("Beware of cows!")
+}
+
+#[cfg(not(cowsay))]
+fn print_warning() {}
+
 fn main() {
-    if cfg!(cowsay) {
-        println!("Beware of cows!")
-    }
+    print_warning();
     generated::say_hello();
 }
